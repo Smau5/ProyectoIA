@@ -228,15 +228,15 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 45);
             this.button1.TabIndex = 20;
-            this.button1.Text = "Cargar datos";
+            this.button1.Text = "Entrenar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(608, 663);
+            this.button3.Location = new System.Drawing.Point(629, 577);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(93, 36);
             this.button3.TabIndex = 21;
             this.button3.Text = "Detectar";
             this.button3.UseVisualStyleBackColor = true;

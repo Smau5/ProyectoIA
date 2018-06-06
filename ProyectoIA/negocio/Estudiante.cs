@@ -10,6 +10,7 @@ namespace ProyectoIA.negocio
     [Table("estudiantes")]
     public class Estudiante
     {
+        [Key]
         public int id { get; set; }
         public string registro { get; set; }
         public string nombre { get; set; }

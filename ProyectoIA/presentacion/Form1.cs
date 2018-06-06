@@ -12,10 +12,12 @@ namespace ProyectoIA.presentacion
 {
     public partial class Form1 : Form
     {
+        RegistrarEstudiante registrar = new RegistrarEstudiante();
 
         public Form1()
         {
             InitializeComponent();
+            panel1.Controls.Add(new FormInicio());
         }
 
         private void buttonCargar_Click(object sender, EventArgs e)
@@ -26,7 +28,13 @@ namespace ProyectoIA.presentacion
         private void registrarEstudianteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            panel1.Controls.Add(new RegistrarEstudiante());
+            panel1.Controls.Add(registrar);
+        }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new FormInicio());
         }
     }
 }

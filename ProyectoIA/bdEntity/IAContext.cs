@@ -15,6 +15,9 @@ namespace ProyectoIA.bdEntity
         }
         public DbSet<Estudiante> estudiantes { get; set; }
         public DbSet<Foto> fotos { get; set; }
+        public DbSet<Examen> examenes { get; set; }
+        public DbSet<Pregunta> preguntas { get; set; }
+        public DbSet<Respuesta> respuestas { get; set; }
 
     }
 }

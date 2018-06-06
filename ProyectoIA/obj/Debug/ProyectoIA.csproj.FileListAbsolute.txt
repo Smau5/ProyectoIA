@@ -24,3 +24,6 @@ D:\VSProyecto\ProyectoIA\ProyectoIA\bin\Debug\Newtonsoft.Json.xml
 D:\VSProyecto\ProyectoIA\ProyectoIA\bin\Debug\System.Net.Http.Extensions.xml
 D:\VSProyecto\ProyectoIA\ProyectoIA\bin\Debug\System.Net.Http.Primitives.xml
 D:\VSProyecto\ProyectoIA\ProyectoIA\obj\Debug\ProyectoIA.csproj.App.config
+D:\VSProyecto\ProyectoIA\ProyectoIA\obj\Debug\ProyectoIA.presentacion.FormInicio.resources
+D:\VSProyecto\ProyectoIA\ProyectoIA\obj\Debug\ProyectoIA.Migrations.preguntas.resources
+D:\VSProyecto\ProyectoIA\ProyectoIA\obj\Debug\ProyectoIA.presentacion.FormRegistrarExamen.resources

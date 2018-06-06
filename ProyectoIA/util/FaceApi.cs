@@ -42,8 +42,16 @@ namespace ProyectoIA.util
                 id
             );
             Stream s = ToStream(image, ImageFormat.Jpeg);
-            await faceServiceClient.AddPersonFaceAsync(
-                personGroupId, estudiante.PersonId, s);
+            try
+            {
+                await faceServiceClient.AddPersonFaceAsync(
+                    personGroupId, estudiante.PersonId, s);
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("no se detecto cara");
+            }
+
 
         }
 
@@ -78,28 +86,37 @@ namespace ProyectoIA.util
             var faces = await faceServiceClient.DetectAsync(s);
             var faceIds = faces.Select(face => face.FaceId).ToArray();
 
-            var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
-            foreach (var identifyResult in results)
+            try
             {
-                Debug.WriteLine("Result of face: {0}", identifyResult.FaceId);
-                //Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
-                if (identifyResult.Candidates.Length == 0)
+                var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
+                foreach (var identifyResult in results)
                 {
-                    Debug.WriteLine("No one identified");
-                    //Console.WriteLine("No one identified");
-                    return null;
+                    Debug.WriteLine("Result of face: {0}", identifyResult.FaceId);
+                    //Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
+                    if (identifyResult.Candidates.Length == 0)
+                    {
+                        Debug.WriteLine("No one identified");
+                        //Console.WriteLine("No one identified");
+                        return null;
+                    }
+                    else
+                    {
+                        // Get top 1 among all candidates returned
+                        var candidateId = identifyResult.Candidates[0].PersonId;
+                        var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
+                        Debug.WriteLine("Identified as {0}", person.Name);
+                        return person.Name;
+
+                        //Console.WriteLine("Identified as {0}", person.Name);
+                    }
                 }
-                else
-                {
-                    // Get top 1 among all candidates returned
-                    var candidateId = identifyResult.Candidates[0].PersonId;
-                    var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
-                    Debug.WriteLine("Identified as {0}", person.Name);
-                    return person.Name;
-                    
-                    //Console.WriteLine("Identified as {0}", person.Name);
-                }
+                return null;
             }
+            catch
+            {
+
+            }
+
             return null;
         }
 
